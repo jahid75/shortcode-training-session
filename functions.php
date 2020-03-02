@@ -14,6 +14,10 @@ function ac_change_login_form_info( $defaults ){
 add_filter( 'login_form_defaults', 'ac_change_login_form_info', 99, 1 );
 // apply_filters( 'login_form_defaults', $defaults )
 
+// Change login logo url
+add_filter( 'login_headerurl', function ( $url ){
+    return trailingslashit($url) . 'hello';
+} );
 
 function ac_redirect_to_front(){
     if( $GLOBALS['pagenow'] === 'wp-login.php' ) {
@@ -23,9 +27,15 @@ function ac_redirect_to_front(){
     }
 }
 // add_action( 'template_redirect', 'ac_redirect_to_front' );
-ac_redirect_to_front();
+// ac_redirect_to_front();
 
+// Change query
 
+function ac_change_post_query( $args ) {
+    $args['category_name'] = 'mango';
+    return $args;
+}
+add_filter( 'ac_post_query', 'ac_change_post_query' );
 // Including required file
 require_once __DIR__ . '/inc/shortcodes.php';
 

@@ -41,7 +41,7 @@ $mangoes = array_filter( $texts, function($item) use ($search){
         }
     }
     */
-     echo join( ', ', (array) $mangoes );
+     // echo join( ', ', (array) $mangoes );
 
 //    if( in_array( 'Mango',  $texts ) ) {
 //         echo implode( ', ', (array) $texts );
